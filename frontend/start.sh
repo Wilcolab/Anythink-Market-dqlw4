@@ -1,3 +1,4 @@
 #!/bin/sh
 
-yarn start
+yarn
+PORT=3001 yarn start
