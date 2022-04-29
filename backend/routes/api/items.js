@@ -53,7 +53,7 @@ router.get("/", auth.optional, function(req, res, next) {
   }
 
   if (typeof req.query.title !== "undefined") {
-    query.title = `/.*${req.query.title}.*/`;
+    query.title = RegExp("/.*" + req.query.title + ".*/");
   }
 
   Promise.all([
