@@ -7,3 +7,10 @@ console.log(res)
 
 const find = db.items.find({})
 console.log(find)
+
+const users = db.users.insertMany(
+    Array.from({ length: 100 }, (v, i) => (
+        { username: "User"+i, email: "email"+i }
+    ))
+)
+console.log(users)
