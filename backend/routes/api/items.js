@@ -53,7 +53,7 @@ router.get("/", auth.optional, function(req, res, next) {
   }
 
   if (typeof req.query.title !== "undefined") {
-    query.title = `/.*${req.query.title}.*/i`;
+    query.title = `/.*${req.query.title}.*/`;
   }
 
   Promise.all([
