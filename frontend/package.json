@@ -2,7 +2,7 @@
   "name": "anythink-market-front",
   "version": "0.1.0",
   "engines": {
-    "node": ">=16"
+    "node": "16.x"
   },
   "private": true,
   "devDependencies": {
@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "REACT_APP_WILCO_ID=\"$(cat ../.wilco)\" react-scripts start",
-    "build": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "format": "yarn prettier --write .",
