@@ -5,12 +5,16 @@ const res = db.items.insertMany(
 
 console.log(res)
 
-const find = db.items.find({})
-console.log(find)
-
 const users = db.users.insertMany(
     Array.from({ length: 100 }, (v, i) => (
-        { username: "User"+i, email: "email"+i }
+        { username: "User" + i, email: "email" + i }
     ))
 )
 console.log(users)
+
+const comments = db.comments.insertMany(
+    Array.from({ length: 100 }, (v, i) => (
+        { body: "Body" + i }
+    ))
+)
+console.log(comments)
