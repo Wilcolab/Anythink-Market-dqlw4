@@ -8,7 +8,7 @@ const Banner = ({ search, setSearch }) => {
       <div className="container p-4 text-center">
         <img src={logo} alt="banner" className="mw-100" />
         <h2>
-          A place to <span onClick={() => setVisible((i) => !i)}>get</span>
+          A place to <span id="get-part" onClick={() => setVisible((i) => !i)}>get</span>
           &nbsp;
           <input
             value={search}
