@@ -1,5 +1,5 @@
 const res = db.items.insertMany(
-    Array.from({ length: 10 }, (v, i) => ({
+    Array.from({ length: 100 }, (v, i) => ({
         title: "Title" + i, description: "About" + i, image: "Image" + i,
     })))
 
