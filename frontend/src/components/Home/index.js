@@ -29,7 +29,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Home = ({ items, token, onLoad, onUnload, tags, onClickTag }) => {
   const [search, setSearch] = useState();
-  const empty = useMemo(() => search && (!items || items.length === 0), [items, search]);
+  const empty = useMemo(
+    () => search && (!items || items.length === 0),
+    [items, search]
+  );
   useEffect(() => {
     const tab = token ? "feed" : "all";
     const itemsPromise = token ? agent.Items.feed : agent.Items.all;
@@ -49,12 +52,18 @@ const Home = ({ items, token, onLoad, onUnload, tags, onClickTag }) => {
 
       <div className="container page">
         <Tags tags={tags} onClickTag={onClickTag} />
-        {empty && <div
-          style={{ width: '40%', background: 'rgba(0,0,0, .3)', 'padding': '4em 2em 1em 2em'}}
-          id="empty">
-          No items found for <b>"{search}"</b>
-        </div>
-        }
+        {empty && (
+          <div
+            style={{
+              width: "40%",
+              background: "rgba(0,0,0, .3)",
+              padding: "4em 2em 1em 2em",
+            }}
+            id="empty"
+          >
+            No items found for <b>"{search}"</b>
+          </div>
+        )}
         <MainView />
       </div>
     </div>
