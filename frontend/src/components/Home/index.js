@@ -1,6 +1,6 @@
 import Banner from "./Banner";
 import MainView from "./MainView";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Tags from "./Tags";
 import agent from "../../agent";
 import { connect } from "react-redux";
@@ -27,6 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Home = ({ token, onLoad, onUnload, tags, onClickTag }) => {
+  const [search, setSearch] = useState();
   useEffect(() => {
     const tab = token ? "feed" : "all";
     const itemsPromise = token ? agent.Items.feed : agent.Items.all;
@@ -34,15 +35,15 @@ const Home = ({ token, onLoad, onUnload, tags, onClickTag }) => {
     onLoad(
       tab,
       itemsPromise,
-      Promise.all([agent.Tags.getAll(), itemsPromise()])
+      Promise.all([agent.Tags.getAll(), itemsPromise(search)])
     );
 
     return onUnload;
-  }, [onLoad, onUnload, token])
+  }, [onLoad, onUnload, search, token]);
 
   return (
     <div className="home-page">
-      <Banner />
+      <Banner search={search} setSearch={setSearch} />
 
       <div className="container page">
         <Tags tags={tags} onClickTag={onClickTag} />
@@ -50,6 +51,6 @@ const Home = ({ token, onLoad, onUnload, tags, onClickTag }) => {
       </div>
     </div>
   );
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
