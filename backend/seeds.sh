@@ -1,3 +1,3 @@
 #!/bin/sh
 
-yarn seeds
+mongosh $MONGODB_URI ./seed.js
